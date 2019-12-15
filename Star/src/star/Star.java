@@ -37,13 +37,13 @@ public class Star implements Serializable {
     
     };
     
-    public Star(String name, String catalogName, Declination declination, 
+    public Star(String name, Declination declination, 
 		RightAscension rightAscension, double apparentMagnitude, 
 		int lightYear, String constellation, double temperature, 
 		double mass) throws Exception 
     {
 	this.name = name;
-	this.catalogName = GreekAlphabet.alpha + constellation;
+	this.catalogName = GreekAlphabet.alpha +  " " + constellation;
 	this.declination = declination;
 	this.rightAscension = rightAscension;
 	this.apparentMagnitude = apparentMagnitude;
@@ -51,10 +51,10 @@ public class Star implements Serializable {
 	this.lightYearDistance = lightYear * LIGHT_YEAR;
 	this.constellation = constellation;
 	if (declination.isHemisphere() == true) {
-	    this.hemisphere = "Northern Hemisphere";
+	    this.hemisphere = "Northern";
 	}
 	else {
-	    this.hemisphere = "Southern Hemisphere";
+	    this.hemisphere = "Southern";
 	}
 	this.temperature = temperature;
 	this.mass = mass * SOLAR_MASS;
@@ -98,6 +98,9 @@ public class Star implements Serializable {
 	return SOLAR_MASS;
     }
 
+    /**
+     * @return the name
+     */
     public String getName() {
 	return name;
     }
@@ -114,16 +117,16 @@ public class Star implements Serializable {
 	this.catalogName = catalogName;
     }
 
-    public Declination getDeclination() {
-	return declination;
+    public String getDeclination() {
+	return declination.toString();
     }
 
     public void setDeclination(Declination declination) {
 	this.declination = declination;
     }
 
-    public RightAscension getRightAscension() {
-	return rightAscension;
+    public String getRightAscension() {
+	return rightAscension.toString();
     }
 
     public void setRightAscension(RightAscension rightAscension) {
@@ -186,7 +189,28 @@ public class Star implements Serializable {
 	this.mass = mass;
     }
     
+    @Override
+    public String toString() {
+	return String.format("Name: %s\nCatalog Name: %s\nDeclination: %s\nRight Ascension: %s\nApparent Magnitude: %.0f magnitudo\n"
+	+ "Absolute Magnitude: %g magnitudo\nLight Year Distance: %g km\nConstellation: %s\nHemisphere: %s\nTemperature: %.2f Celsius\nMass: %g kg", 
+	getName(), getCatalogName(), getDeclination(), getRightAscension(), getApparentMagnitude(), getAbsoluteMagnitude(), 
+	getLightYearDistance(), getConstellation(), getHemisphere(), getTemperature(), getMass());
+    }
+    
     public static void main(String[] args) throws Exception {
+	Star s1 = new Star("ABC1234", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 3, "Aries", 10000, 8);
+	Star s2 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
+	Star s3 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
 	
+//	System.out.println(star.toString());
+//	Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
+//	for (int i = 0; i < greek.length; i++) {
+//	    System.out.println(greek[1].name());
+//	}
+	
+//	Manage.addStar(s1);
+//	Manage.addStar(s2);
+	Manage.addStar(s3);
+	Manage.showAllStars("star-database.obj");
     }    
 }

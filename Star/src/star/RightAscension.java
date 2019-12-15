@@ -5,11 +5,13 @@
  */
 package star;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pc
  */
-public class RightAscension {
+public class RightAscension implements Serializable {
     
     private int hours;
     private int minutes;
@@ -62,6 +64,11 @@ public class RightAscension {
 		throw new Exception("right ascension value not correct");
 	    }
 	}
+    }
+    
+    @Override
+    public String toString() {
+	return hours + " hours " + minutes + " minutes " + seconds + " seconds";
     }
     
 }

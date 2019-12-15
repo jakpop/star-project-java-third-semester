@@ -5,21 +5,26 @@
  */
 package star;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pc
  */
-public class Declination {
+public class Declination implements Serializable {
     
     private int degrees;
     private int minutes;
     private double seconds;
     private boolean hemisphere;
     
+    /**
+     * @return the degrees
+     */
     public int getDegrees() {
 	return degrees;
     }
-
+    
     public void setDegrees(int degrees) {
 	this.degrees = degrees;
     }
@@ -97,4 +102,10 @@ public class Declination {
 	    }
 	}
     }
+    
+    @Override
+    public String toString() {
+	return degrees + " degrees " + minutes + " minutes " + seconds + " seconds";
+    }
+    
 }
