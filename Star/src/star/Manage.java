@@ -17,49 +17,6 @@ import java.util.*;
 
 public class Manage implements Serializable {
     
-//    public static String catalogName(String fileName)
-//    {
-//	String catalogName = "";
-//	ObjectInputStream ois = null;
-//	
-//	try
-//	{
-//	    ois = new AppendableObjectInputStream(new FileInputStream(fileName));
-//	    
-//	    Object obj = null;
-//	    
-//	    Star star = new Star();
-//	    ArrayList<Star> starList = new ArrayList<Star>();
-//	    Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
-//	    int howmany = 0;
-//	    
-//	    while ((obj = ois.readObject()) != null) {
-//		if (obj instanceof Star) {
-//		    star = (Star)obj;
-//		    starList.add(star);
-//		    if (howmany > 0) {
-//			if (starList.get(howmany).getConstellation().equals(starList.get(howmany - 1).getConstellation())) {
-//			catalogName = greek[howmany].name() + " " + starList.get(howmany).getConstellation();
-//			break;
-//			}
-//		    }
-//		    howmany++;
-//		    System.out.println(star.toString());
-//		    System.out.println("");
-//		}
-//	    }
-//	    ois.close();
-//	}
-//	catch (EOFException ex) {
-//	    System.out.println("\nEnd of file");
-//	}
-//	catch (Exception e) {
-//	    e.printStackTrace();
-//	}
-//	
-//	return catalogName;
-//    }
-    
     public static void addStar(Star star) throws Exception
     {
 	ObjectOutputStream oos = null;
@@ -83,14 +40,12 @@ public class Manage implements Serializable {
 		    Object obj = null;
 
 		    Star test = new Star();
-		    ArrayList<Star> starList = new ArrayList<Star>();
 		    Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
 		    int greekIndex = 1;
 
 		    while ((obj = ois.readObject()) != null) {
 			if (obj instanceof Star) {
 			    test = (Star)obj;
-			    starList.add(test);
 			    if (test.getConstellation().equals(star.getConstellation())) {
 				star.setCatalogName(greek[greekIndex].name() + " " + star.getConstellation());
 				greekIndex++;
@@ -128,21 +83,11 @@ public class Manage implements Serializable {
 	    Object obj = null;
 	    
 	    Star star = new Star();
-//	    ArrayList<Star> starList = new ArrayList<Star>();
-//	    Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
-//	    int howmany = 0;
 	    
 	    while ((obj = ois.readObject()) != null) {
 		if (obj instanceof Star) {
 		    star = (Star)obj;
-//		    starList.add(star);
-//		    if (howmany > 0) {
-//			if (starList.get(howmany).getConstellation().equals(starList.get(howmany - 1).getConstellation())) {
-//			starList.get(howmany).setCatalogName(greek[howmany].name() + " " + starList.get(howmany).getConstellation());
-//			
-//			}
-//		    }
-//		    howmany++;
+
 		    System.out.println(star.toString());
 		    System.out.println("");
 		}
