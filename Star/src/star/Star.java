@@ -198,9 +198,10 @@ public class Star implements Serializable {
     }
     
     public static void main(String[] args) throws Exception {
-	Star s1 = new Star("ABC1234", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 3, "Aries", 10000, 8);
+	Star s1 = new Star("ABC1234", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 3, "Orion", 10000, 8);
 	Star s2 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
-	Star s3 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
+	Star s3 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Orion", 9999, 26);
+	Star s4 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
 	
 //	System.out.println(star.toString());
 //	Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
@@ -208,9 +209,10 @@ public class Star implements Serializable {
 //	    System.out.println(greek[1].name());
 //	}
 	
-//	Manage.addStar(s1);
-//	Manage.addStar(s2);
+	Manage.addStar(s1);
+	Manage.addStar(s2);
 	Manage.addStar(s3);
+	Manage.addStar(s4);
 	Manage.showAllStars("star-database.obj");
     }    
 }
