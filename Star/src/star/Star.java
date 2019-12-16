@@ -203,16 +203,11 @@ public class Star implements Serializable {
 	Star s3 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Orion", 9999, 26);
 	Star s4 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
 	
-//	System.out.println(star.toString());
-//	Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
-//	for (int i = 0; i < greek.length; i++) {
-//	    System.out.println(greek[1].name());
-//	}
-	
-	Manage.addStar(s1);
-	Manage.addStar(s2);
-	Manage.addStar(s3);
-	Manage.addStar(s4);
+//	Manage.addStar(s1, "star-database.obj");
+//	Manage.addStar(s2, "star-database.obj");
+//	Manage.addStar(s3, "star-database.obj");
+//	Manage.addStar(s4, "star-database.obj");
+	Manage.deleteStar("beta Orion", "star-database.obj");
 	Manage.showAllStars("star-database.obj");
     }    
 }
