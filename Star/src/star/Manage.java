@@ -101,15 +101,6 @@ public class Manage implements Serializable {
 	}
     }
     
-    public static boolean containsCatalogName(ArrayList<Star> starList, String catalogName){
-	for(Star star : starList) {
-	    if (star != null && star.getCatalogName().equals(catalogName)) {
-		return true;
-	    }
-	}
-	return false;
-    }
-    
     public static void deleteStar(String catalogName, String fileName)
     {
 	ObjectInputStream ois = null;
