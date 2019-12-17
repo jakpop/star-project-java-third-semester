@@ -23,6 +23,8 @@ public class Manage implements Serializable {
 	
 	Path path = Paths.get(fileName);
 	
+	Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
+	
 	try 
 	{
 	    if (!Files.exists(path)) {
@@ -40,7 +42,6 @@ public class Manage implements Serializable {
 		    Object obj = null;
 
 		    Star test = new Star();
-		    Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
 		    int greekIndex = 1;
 
 		    while ((obj = ois.readObject()) != null) {
@@ -100,13 +101,23 @@ public class Manage implements Serializable {
 	    e.printStackTrace();
 	}
     }
-    
+
+public static boolean containsCatalogName(ArrayList<Star> starList, String catalogName) {
+  for (int i = 0; i < starList.size(); i++) {
+    if (starList.get(i).getCatalogName().equals(catalogName)) {
+      return true;
+		}
+  }
+  return false;
+}
+  
     public static void deleteStar(String catalogName, String fileName)
     {
 	ObjectInputStream ois = null;
 	ObjectOutputStream oos = null;
 	File starDatabase = new File(fileName);
 	ArrayList<Star> starList = new ArrayList<Star>();
+	Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
 	
 	try
 	{
@@ -139,6 +150,9 @@ public class Manage implements Serializable {
 	    oos = new ObjectOutputStream(new FileOutputStream(starDatabase));
 
 	    for (int i = 0; i < starList.size(); i++) {
+		if (!containsCatalogName(starList, catalogName)) {
+		    starList.get(i).setCatalogName(greek[0] + " " + starList.get(i).getConstellation());
+		}
 		addStar(starList.get(i), fileName);
 	    }
 	    oos.close();

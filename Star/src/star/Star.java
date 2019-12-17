@@ -207,7 +207,7 @@ public class Star implements Serializable {
 //	Manage.addStar(s2, "star-database.obj");
 //	Manage.addStar(s3, "star-database.obj");
 //	Manage.addStar(s4, "star-database.obj");
-	Manage.deleteStar("beta Orion", "star-database.obj");
+	Manage.deleteStar("alpha Orion", "star-database.obj");
 	Manage.showAllStars("star-database.obj");
     }    
 }
