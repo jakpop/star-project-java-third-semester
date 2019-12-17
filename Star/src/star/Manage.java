@@ -101,6 +101,15 @@ public class Manage implements Serializable {
 	}
     }
     
+    public static boolean containsCatalogName(ArrayList<Star> starList, String catalogName){
+	for(Star star : starList) {
+	    if (star != null && star.getCatalogName().equals(catalogName)) {
+		return true;
+	    }
+	}
+	return false;
+    }
+    
     public static void deleteStar(String catalogName, String fileName)
     {
 	ObjectInputStream ois = null;
@@ -117,8 +126,8 @@ public class Manage implements Serializable {
 
 	    Star test = new Star();
 //	    int index = 1;
-//	    int greekIndex = 0;
-//	    int listIndex = 0;
+	    int greekIndex = 1;
+	    int listIndex = 0;
 
 	    while ((obj = ois.readObject()) != null) {
 		if (obj instanceof Star) {
@@ -127,14 +136,12 @@ public class Manage implements Serializable {
 			continue;
 		    }
 		    starList.add(test);
-//		    if (starList.size() > 1) {
-//			if (test.getConstellation().equals(starList.get(index - 1).getConstellation())) {
+//		    if (containsCatalogName(starList, catalogName)) {
 //			test.setCatalogName(greek[greekIndex].name() + " " + test.getConstellation());
 //			greekIndex++;
-//			index++;
-//			}
+////			index++;
 //		    }
-//		    starList.set(listIndex++, test);
+		    starList.set(listIndex++, test);
 		}
 	    }
 	    ois.close();
@@ -150,15 +157,17 @@ public class Manage implements Serializable {
 	try {
 	    oos = new ObjectOutputStream(new FileOutputStream(starDatabase));
 
-	    int greekIndex = 0;
-	    int index = 1;
+//	    int greekIndex = 0;
+//	    int index = 1;
 	    for (int i = 0; i < starList.size(); i++) {
-//		if (starList.get(index).getConstellation().equals(starList.get(i).getConstellation())) {
+		addStar(starList.get(i), fileName);
+//		if (containsCatalogName(starList, catalogName)) {
 //		    starList.get(index).setCatalogName(greek[greekIndex].name() + " " + starList.get(index).getConstellation());
 //		    greekIndex++;
+////			index++;
 //		}
 //		System.out.println(starList.get(i));
-		oos.writeObject(starList.get(i));
+//		oos.writeObject(starList.get(i));
 	    }
 	    oos.close();
 	}

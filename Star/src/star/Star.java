@@ -200,8 +200,8 @@ public class Star implements Serializable {
     public static void main(String[] args) throws Exception {
 	Star s1 = new Star("ABC1234", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 3, "Orion", 10000, 8);
 	Star s2 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
-	Star s3 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Orion", 9999, 26);
-	Star s4 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
+	Star s3 = new Star("DEF9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Orion", 9999, 26);
+	Star s4 = new Star("XDX9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
 	
 //	Manage.addStar(s1, "star-database.obj");
 //	Manage.addStar(s2, "star-database.obj");
