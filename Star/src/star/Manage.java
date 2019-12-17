@@ -101,16 +101,16 @@ public class Manage implements Serializable {
 	    e.printStackTrace();
 	}
     }
-    
-    public static boolean containsCatalogName(ArrayList<Star> starList, String catalogName) {
-	    for (int i = 0; i < starList.size(); i++) {
-		if (starList.get(i).getCatalogName().equals(catalogName)) {
-		    return true;
+
+public static boolean containsCatalogName(ArrayList<Star> starList, String catalogName) {
+  for (int i = 0; i < starList.size(); i++) {
+    if (starList.get(i).getCatalogName().equals(catalogName)) {
+      return true;
 		}
-	    }
-	    return false;
-    }
-    
+  }
+  return false;
+}
+  
     public static void deleteStar(String catalogName, String fileName)
     {
 	ObjectInputStream ois = null;
