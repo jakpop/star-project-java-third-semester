@@ -116,7 +116,6 @@ public class Manage implements Serializable {
 	ObjectOutputStream oos = null;
 	File starDatabase = new File(fileName);
 	ArrayList<Star> starList = new ArrayList<Star>();
-	Star.GreekAlphabet[] greek = Star.GreekAlphabet.values();
 	
 	try
 	{
@@ -125,9 +124,6 @@ public class Manage implements Serializable {
 	    Object obj = null;
 
 	    Star test = new Star();
-//	    int index = 1;
-	    int greekIndex = 1;
-	    int listIndex = 0;
 
 	    while ((obj = ois.readObject()) != null) {
 		if (obj instanceof Star) {
@@ -136,12 +132,6 @@ public class Manage implements Serializable {
 			continue;
 		    }
 		    starList.add(test);
-//		    if (containsCatalogName(starList, catalogName)) {
-//			test.setCatalogName(greek[greekIndex].name() + " " + test.getConstellation());
-//			greekIndex++;
-////			index++;
-//		    }
-		    starList.set(listIndex++, test);
 		}
 	    }
 	    ois.close();
@@ -157,17 +147,8 @@ public class Manage implements Serializable {
 	try {
 	    oos = new ObjectOutputStream(new FileOutputStream(starDatabase));
 
-//	    int greekIndex = 0;
-//	    int index = 1;
 	    for (int i = 0; i < starList.size(); i++) {
 		addStar(starList.get(i), fileName);
-//		if (containsCatalogName(starList, catalogName)) {
-//		    starList.get(index).setCatalogName(greek[greekIndex].name() + " " + starList.get(index).getConstellation());
-//		    greekIndex++;
-////			index++;
-//		}
-//		System.out.println(starList.get(i));
-//		oos.writeObject(starList.get(i));
 	    }
 	    oos.close();
 	}
