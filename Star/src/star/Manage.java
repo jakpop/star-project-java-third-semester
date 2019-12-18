@@ -11,7 +11,7 @@ import java.util.*;
 
 /**
  *
- * @author pc
+ * @author Jakub Popiół
  */
 
 
@@ -27,12 +27,12 @@ public class Manage implements Serializable {
 	
 	try 
 	{
-	    if (!Files.exists(path)) {
+	    if (!Files.exists(path)) {								    //if file does not exist make a new one and write an objext to it
 		oos = new ObjectOutputStream(new FileOutputStream(fileName));
 		oos.writeObject(star);
 	    }
 	    else {
-		oos = new AppendableObjectOutputStream(new FileOutputStream(fileName, true));
+		oos = new AppendableObjectOutputStream(new FileOutputStream(fileName, true));	    //if file exist append object
 		
 		ObjectInputStream ois = null;
 		try
@@ -47,6 +47,7 @@ public class Manage implements Serializable {
 		    while ((obj = ois.readObject()) != null) {
 			if (obj instanceof Star) {
 			    test = (Star)obj;
+			    /* update catalog name. addition date increasingly */
 			    if (test.getConstellation().equals(star.getConstellation())) {
 				star.setCatalogName(greek[greekIndex].name() + " " + star.getConstellation());
 				greekIndex++;
@@ -102,16 +103,16 @@ public class Manage implements Serializable {
 	}
     }
 
-public static boolean containsCatalogName(ArrayList<Star> starList, String catalogName) {
-  for (int i = 0; i < starList.size(); i++) {
-    if (starList.get(i).getCatalogName().equals(catalogName)) {
-      return true;
-		}
-  }
-  return false;
-}
+    public static boolean containsCatalogName(ArrayList<Star> starList, String catalogName) {
+	for (int i = 0; i < starList.size(); i++) {
+	    if (starList.get(i).getCatalogName().equals(catalogName)) {
+		return true;
+	    }
+	}
+	return false;
+    }
   
-    public static void deleteStar(String catalogName, String fileName)
+    public static void deleteStar(String catalogName, String fileName)		
     {
 	ObjectInputStream ois = null;
 	ObjectOutputStream oos = null;
@@ -130,14 +131,15 @@ public static boolean containsCatalogName(ArrayList<Star> starList, String catal
 	    while ((obj = ois.readObject()) != null) {
 		if (obj instanceof Star) {
 		    test = (Star)obj;
+		    /* delete object with matching catalog name */
 		    if (test.getCatalogName().equals(catalogName)) {
 			continue;
 		    }
-		    starList.add(test);
+		    starList.add(test);						//add n-1 objects to a list
 		}
 	    }
 	    ois.close();
-	    starDatabase.delete();
+	    starDatabase.delete();						//delete old file
 	}
 	catch (EOFException ex) {
 //		    System.out.println("\nEnd of file");
@@ -147,8 +149,9 @@ public static boolean containsCatalogName(ArrayList<Star> starList, String catal
 	}
 	
 	try {
+	    /* make new file without named object */
 	    oos = new ObjectOutputStream(new FileOutputStream(starDatabase));
-
+	    
 	    for (int i = 0; i < starList.size(); i++) {
 		if (!containsCatalogName(starList, catalogName)) {
 		    starList.get(i).setCatalogName(greek[0] + " " + starList.get(i).getConstellation());

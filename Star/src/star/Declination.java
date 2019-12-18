@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author pc
+ * @author Jakub Popiół
  */
 public class Declination implements Serializable {
     
@@ -53,8 +53,10 @@ public class Declination implements Serializable {
 	this.hemisphere = hemisphere;
     }
     
-    /* parameteres: declination value. int degrees, int minutes, double seconds, boolean hemisphere - true for north hemisphere, false for sosuth hemisphere.  
-       gets values <0.00; 90.00> for north hemisphere and  <-90.00; 0.00> for south hemisphere */
+    /** 
+     * parameteres: declination value. int degrees, int minutes, double seconds, boolean hemisphere - true for north hemisphere, false for sosuth hemisphere.  
+     * gets values <0.00; 90.00> for north hemisphere and  <-90.00; 0.00> for south hemisphere 
+     */
     public Declination(int degrees, int minutes, double seconds, boolean hemisphere) throws Exception
     {
 	this.degrees = degrees;

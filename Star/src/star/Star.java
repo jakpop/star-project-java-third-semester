@@ -39,7 +39,7 @@ public class Star implements Serializable {
     
     public Star(String name, Declination declination, 
 		RightAscension rightAscension, double apparentMagnitude, 
-		int lightYear, String constellation, double temperature, 
+		double lightYear, String constellation, double temperature, 
 		double mass) throws Exception 
     {
 	this.name = name;
@@ -48,7 +48,7 @@ public class Star implements Serializable {
 	this.rightAscension = rightAscension;
 	this.apparentMagnitude = apparentMagnitude;
 	this.absoluteMagnitude = apparentMagnitude - 5*Math.log10(PARSEC) + 5;
-	this.lightYearDistance = lightYear * LIGHT_YEAR;
+	this.lightYearDistance = lightYear;
 	this.constellation = constellation;
 	if (declination.isHemisphere() == true) {
 	    this.hemisphere = "Northern";
@@ -192,22 +192,8 @@ public class Star implements Serializable {
     @Override
     public String toString() {
 	return String.format("Name: %s\nCatalog Name: %s\nDeclination: %s\nRight Ascension: %s\nApparent Magnitude: %.0f magnitudo\n"
-	+ "Absolute Magnitude: %g magnitudo\nLight Year Distance: %g km\nConstellation: %s\nHemisphere: %s\nTemperature: %.2f Celsius\nMass: %g kg", 
+	+ "Absolute Magnitude: %g magnitudo\nDistance: %.1f light year\nConstellation: %s\nHemisphere: %s\nTemperature: %.2f Kelvin\nMass: %g kg", 
 	getName(), getCatalogName(), getDeclination(), getRightAscension(), getApparentMagnitude(), getAbsoluteMagnitude(), 
 	getLightYearDistance(), getConstellation(), getHemisphere(), getTemperature(), getMass());
     }
-    
-    public static void main(String[] args) throws Exception {
-	Star s1 = new Star("ABC1234", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 3, "Orion", 10000, 8);
-	Star s2 = new Star("XYZ9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
-	Star s3 = new Star("DEF9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Orion", 9999, 26);
-	Star s4 = new Star("XDX9876", new Declination(24, 58, 22.55, true), new RightAscension(14, 20, 11), 5, 8, "Aries", 9999, 26);
-	
-//	Manage.addStar(s1, "star-database.obj");
-//	Manage.addStar(s2, "star-database.obj");
-//	Manage.addStar(s3, "star-database.obj");
-//	Manage.addStar(s4, "star-database.obj");
-	Manage.deleteStar("alpha Orion", "star-database.obj");
-	Manage.showAllStars("star-database.obj");
-    }    
 }
