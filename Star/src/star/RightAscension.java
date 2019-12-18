@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author pc
+ * @author Jakub Popiół
  */
 public class RightAscension implements Serializable {
     

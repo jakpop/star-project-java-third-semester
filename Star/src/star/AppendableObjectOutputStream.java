@@ -11,7 +11,7 @@ import java.io.OutputStream;
 
 /**
  *
- * @author pc
+ * @author Jakub Popiół
  */
 public class AppendableObjectOutputStream extends ObjectOutputStream {
     public AppendableObjectOutputStream(OutputStream out) throws IOException {
