@@ -72,7 +72,7 @@ public class Search {
 	}
     }
     
-    public static void temparature(double tempStart, double tempEnd, String fileName) 
+    public static void temperature(double tempStart, double tempEnd, String fileName) 
     {
 	try
 	{
