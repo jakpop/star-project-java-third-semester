@@ -25,7 +25,7 @@ public class Main {
 //	Manage.showAllStars("star-database.obj");
 //	Search.constellation("Aries", "star-database.obj");
 //	Search.closerThan(10, "star-database.obj");
-//	Search.temparature(1000, 6000, "star-database.obj");
+//	Search.temperature(1000, 6000, "star-database.obj");
 //	Search.absoluteMagnitude(-60, -40, "star-database.obj");
 //	Search.hemisphere("Southern", "star-database.obj");
 //	Search.supernovas("star-database.obj");

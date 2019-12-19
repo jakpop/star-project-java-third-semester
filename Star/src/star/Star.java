@@ -98,9 +98,6 @@ public class Star implements Serializable {
 	return SOLAR_MASS;
     }
 
-    /**
-     * @return the name
-     */
     public String getName() {
 	return name;
     }
